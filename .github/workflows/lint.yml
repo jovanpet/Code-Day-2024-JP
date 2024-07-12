@@ -1,11 +1,6 @@
 name: Lint
 
-on: 
-  pull_request: 
-  types: [opened, synchronize] 
-  branches: 
-  - main
-  - 'jhernandez/**'
+on: [push]
 jobs:
   lint:
     runs-on: ubuntu-latest
