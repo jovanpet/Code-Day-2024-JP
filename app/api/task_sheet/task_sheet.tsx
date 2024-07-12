@@ -1,4 +1,3 @@
-
 // Should return all task_sheets student/adult is part of
 // request will send you a key (I guess we don't check if key is parent of child) and you will check the columns for student_id and adult_ids and if it’s in it we  return it.
 
@@ -9,12 +8,7 @@
 // | adult_ids | json |  
 // | task_name | string |
 
-interface Task {
-    task_id: number;
-    student_id: number;
-    adult_ids: string;
-    task_name:string;
-}
+
 import { NextResponse, NextRequest } from 'next/server';
 
 const adults_json = '{ "adult_ids" : [' +
@@ -44,7 +38,6 @@ function findTasks(id: number, tasks_local: Task[]): Task[] {
     return (foundTasks);
 }
 
-
 export async function GET(req: NextRequest) {
 
     // const obj = JSON.parse(text);
@@ -61,4 +54,11 @@ export async function GET(req: NextRequest) {
     }
     console.log(foundTasks)
     return NextResponse.json(foundTasks, { status: 200 });
+}
+
+export interface Task {
+    task_id: number;
+    student_id: number;
+    adult_ids: string; // gets returned as parsed JSON string
+    task_name:string;
 }

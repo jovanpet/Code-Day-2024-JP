@@ -1,7 +1,7 @@
 /**
  * @jest-environment node
  */
-import { GET } from './taskpage';
+import { GET } from './task_sheet.tsx';
 
 it('should return data with status 200', async () => {
   const requestObj = {
@@ -14,7 +14,7 @@ it('should return data with status 200', async () => {
   const body = await response.json();
 
   expect(response.status).toBe(200);
-  expect(body.id).toBe(1);
+  expect(Array.isArray(body)).toBe(true);
 });
 
 it('should return error with status 400 when item not found', async () => {
