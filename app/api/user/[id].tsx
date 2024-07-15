@@ -26,7 +26,7 @@ const users: User[] = [
 function findUsersTaskSheets(id: number): TaskSheet[] {
     for (let i = 0; i < users.length; i++) {
         if (users[i].id == id) {
-            return users[i].task_sheet_ids //TODO change this end point to pull task info of all these once that endpoint exists
+            return users[i].task_sheet_ids; //TODO change this end point to pull task info of all these once that endpoint exists
         }
     }
     return []
