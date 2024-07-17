@@ -1,0 +1,33 @@
+name: Server
+
+on: [push]
+jobs:
+  start-server:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Make production build
+        run: npm run build
+
+      - name: Start Next.js server
+        run: npm run start & echo $! > server_pid.txt
+
+      - name: Wait for server to start
+        run: sleep 15
+
+      - name: Display server PID
+        run: cat server_pid.txt
+
+      - name: Terminate server
+        run: kill $(cat server_pid.txt)
