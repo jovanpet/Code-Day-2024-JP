@@ -1,14 +1,3 @@
-// Should return all task_sheets student/adult is part of
-// request will send you a key (I guess we don't check if key is parent of child) and you will check the columns for student_id and adult_ids and if it’s in it we  return it.
-
-// **Tasks Table**
-// | Column | Type | 
-// | task_id | integer | 
-// | student_id | integer |  
-// | adult_ids | json |  
-// | task_name | string |
-
-
 import { TaskSheet } from '../task_sheet/task_sheet';
 import { NextApiRequest, NextApiResponse } from 'next';
 
