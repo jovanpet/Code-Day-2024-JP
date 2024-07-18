@@ -21,13 +21,13 @@ jobs:
         run: npm run build
 
       - name: Start Next.js server
-        run: npm run start & echo $! > server_pid.txt
+        run: npm run start & echo $! > pid_temp.txt
 
       - name: Wait for server to start
         run: sleep 15
 
-      - name: Display server PID
-        run: cat server_pid.txt
-
       - name: Terminate server
-        run: kill $(cat server_pid.txt)
+        run: kill -9 $(cat pid_temp.txt)
+
+      - name: Remove extra artifacts
+        run: rm pid_temp.txt
