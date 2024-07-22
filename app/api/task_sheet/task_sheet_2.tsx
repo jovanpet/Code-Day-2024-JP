@@ -1,5 +1,5 @@
 import { TaskSheet } from '../interfaces/interfaces';
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 
 // This constant is for testing purposes only, remove when not needed
 const taskSheets: TaskSheet[] = [
@@ -34,20 +34,18 @@ const getTaskSheetById = (id: number): TaskSheet | undefined => {
     return taskSheets.find(taskSheet => taskSheet.id === id);
 };
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default function handler(req: NextRequest) {
     const method = req.method;
     switch (method) {
     case 'GET':
-        const id = Number(req.query.id);
+        const id = Number(req.nextUrl.searchParams.get('id'));
         const taskSheet = getTaskSheetById(id);
         if (taskSheet) {
-            res.status(200).json(taskSheet);
+            return NextResponse.json(taskSheet, { status: 200 });
         } else {
-            res.status(404).json({ message: 'Task sheet not found' });
+            return NextResponse.json({ message: `Task sheet with id ${id} not found` }, { status: 404 });
         }
-        break;
     default:
-        res.setHeader('Allow', ['GET']);
-        res.status(405).end(`Method ${method} Not Allowed`);
+        return NextResponse.json({ message: `Method ${method} Not Allowed` }, { status: 405 });
     }
 };
