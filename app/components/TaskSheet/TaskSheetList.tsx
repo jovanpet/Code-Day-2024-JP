@@ -7,13 +7,13 @@ interface TaskSheetListProps {
 }
 
 const TaskSheetList: React.FC<TaskSheetListProps> = ({ taskSheets }) => {
-  return (
-    <div className="task-sheet-list">
-      {taskSheets.map(taskSheet => (
-        <TaskSheetCard key={taskSheet.id} taskSheet={taskSheet} />
-      ))}
-    </div>
-  );
+    return (
+        <div className="task-sheet-list">
+            {taskSheets.map(taskSheet => (
+                <TaskSheetCard key={taskSheet.id} taskSheet={taskSheet} />
+            ))}
+        </div>
+    );
 };
 
 export default TaskSheetList;
