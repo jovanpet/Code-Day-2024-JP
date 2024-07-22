@@ -1,3 +1,15 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "no-console": "warn", // Disallow the use of console.log and console.error
+    "no-unused-vars": "error", // Disallow unused variables
+    "indent": [
+      "error",
+      4
+    ], // Enforce 2 spaces for indentation
+    "semi": [
+      "error",
+      "always"
+    ] // Require semicolons at the end of statements
+  }
 }
