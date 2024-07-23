@@ -1,5 +1,4 @@
 import { TaskSheet } from '../interfaces/interfaces';
-import { NextRequest, NextResponse } from 'next/server';
 
 // This constant is for testing purposes only, remove when not needed
 const taskSheets: TaskSheet[] = [
@@ -30,22 +29,14 @@ const taskSheets: TaskSheet[] = [
 ];
 
 // TODO: Implement this function to use a real API
+/**
+ * Returns the task sheet with the given ID
+ * 
+ * @param id The ID of the task sheet to get
+ * @returns The task sheet with the given ID
+ */
 const getTaskSheetById = (id: number): TaskSheet | undefined => {
     return taskSheets.find(taskSheet => taskSheet.id === id);
 };
 
-export default function handler(req: NextRequest) {
-    const method = req.method;
-    switch (method) {
-    case 'GET':
-        const id = Number(req.nextUrl.searchParams.get('id'));
-        const taskSheet = getTaskSheetById(id);
-        if (taskSheet) {
-            return NextResponse.json(taskSheet, { status: 200 });
-        } else {
-            return NextResponse.json({ message: `Task sheet with id ${id} not found` }, { status: 404 });
-        }
-    default:
-        return NextResponse.json({ message: `Method ${method} Not Allowed` }, { status: 405 });
-    }
-};
+export default getTaskSheetById;
