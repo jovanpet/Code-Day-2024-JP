@@ -1,6 +1,5 @@
-import { GET } from './[id].tsx';
-import React from 'react'
-import { User } from '../interfaces/interfaces.tsx';
+import { GetUserTimeSheets } from './[id].tsx';
+import React from 'react';
 
 async function CallAPI() {
     const requestObj = {
@@ -9,30 +8,26 @@ async function CallAPI() {
         },
     } as any;
 
-    const response = await GET(requestObj);
-    console.log(response);
-    const body:{    user:{id: number;
-        task_sheet_ids: string;
-        first_name: string;
-        second_name: string;
-        student: boolean;}} = await response.json();
+    const response = await GetUserTimeSheets(requestObj);
+    const body: { user: { [key: string]: any } } = await response.json();
     return (
         <>
-
             <table className='table table-bordered'>
-
-            <th>Users</th>
-            <tbody>
-                        {Object.keys(body.user).map((key) => (
-    <tr>
-        <tr>{key}</tr>
-        <td>{body.user[key]}</td>
- 
-    </tr>
-))}
+                <thead>
+                    <tr>
+                        <th>Users</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {Object.keys(body.user).map((key) => (
+                        <tr key={key}>
+                            <td>{key}</td>
+                            <td>{body.user[key]}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </>
-    )
+    );
 }
 export default CallAPI;

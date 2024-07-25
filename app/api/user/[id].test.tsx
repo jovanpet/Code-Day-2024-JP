@@ -1,13 +1,10 @@
 /**
  * @jest-environment node
  */
-import {GET} from './[id].tsx';
-import { createMocks } from 'node-mocks-http';
-import { NextApiRequest, NextApiResponse } from 'next';
-import { NextRequest, NextResponse } from 'next/server';
+import {GetUserTimeSheets} from './[id].tsx';
 
 
-const expected_task_sheet_json = "{\"tasks\":{\"task_sheet_ids\":[{\"id\":1},{\"id\":2}]}}"
+const expected_task_sheet_json = "{\"tasks\":{\"task_sheet_ids\":[{\"id\":1},{\"id\":2}]}}";
 
 it('should return data with status 200', async () => {
 
@@ -17,7 +14,7 @@ it('should return data with status 200', async () => {
         },
     } as any;
 
-    const response = await GET(requestObj);
+    const response = await GetUserTimeSheets(requestObj);
 
 
     expect(response.status).toBe(200);
@@ -31,9 +28,8 @@ it('should return error with status 400 when item not found', async () => {
         },
     } as any;
 
-    const response = await GET(requestObj);
+    const response = await GetUserTimeSheets(requestObj);
 
-    console.log(response)
     expect(response.status).toBe(404);
     expect(response.json()).toEqual({ error: 'User with that ID does not exist' });
 });
