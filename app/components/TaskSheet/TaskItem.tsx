@@ -9,6 +9,7 @@ interface TaskItemProps {
 }
 
 const TaskItem: React.FC<TaskItemProps> = ({ task, onTaskCompletion }) => {
+    
     return (
         <li>
             <label>

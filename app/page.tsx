@@ -1,5 +1,5 @@
 import React from 'react';
-import TaskSheetPage from './pages/TaskSheetsPage';
+import TaskSheetPage from './TaskSheetsPage';
 
 const App: React.FC = () => {
     return (

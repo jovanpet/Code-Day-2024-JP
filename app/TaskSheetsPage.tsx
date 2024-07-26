@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import TaskSheetList from '../components/TaskSheet/TaskSheetList';
-import { TaskSheet } from '../api/interfaces/interfaces';
+import TaskSheetList from './components/TaskSheet/TaskSheetList';
+import { TaskSheet } from './api/interfaces/interfaces';
 
 const TaskSheetPage: React.FC = () => {
     const [taskSheets, setTaskSheets] = useState<TaskSheet[]>([]);
