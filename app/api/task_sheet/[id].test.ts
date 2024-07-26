@@ -1,5 +1,5 @@
 import { createMocks } from 'node-mocks-http';
-import { GET } from './[id]';
+import { GetTasks } from './[id]';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 describe('GET /api/tasksheet/[id]', () => {
@@ -9,7 +9,7 @@ describe('GET /api/tasksheet/[id]', () => {
             query: {},
         });
 
-        await GET(req, res);
+        await GetTasks(req, res);
 
         expect(res.statusCode).toBe(400);
         expect(res._getJSONData()).toEqual({ error: 'TaskSheet ID is required' });
@@ -21,7 +21,7 @@ describe('GET /api/tasksheet/[id]', () => {
             query: { id: 'abc' },
         });
 
-        await GET(req, res);
+        await GetTasks(req, res);
 
         expect(res.statusCode).toBe(400);
         expect(res._getJSONData()).toEqual({ error: 'TaskSheet ID must be a number' });
@@ -33,7 +33,7 @@ describe('GET /api/tasksheet/[id]', () => {
             query: { id: '999' },
         });
 
-        await GET(req, res);
+        await GetTasks(req, res);
 
         expect(res.statusCode).toBe(404);
         expect(res._getJSONData()).toEqual({ error: 'TaskSheet not found' });
@@ -45,7 +45,7 @@ describe('GET /api/tasksheet/[id]', () => {
             query: { id: '1' },
         });
 
-        await GET(req, res);
+        await GetTasks(req, res);
 
         expect(res.statusCode).toBe(200);
         expect(res._getJSONData()).toEqual({

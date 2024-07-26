@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createMocks } from 'node-mocks-http';
-import { GET } from './[ids]';
+import { GetTaskSheets } from './[ids]';
 import { TaskSheet } from '../interfaces/interfaces';
 
 let mockTaskSheets: TaskSheet[] = [
@@ -21,7 +21,7 @@ describe('GET /api/task_sheet', () => {
             query: {}
         });
 
-        await GET(req, res);
+        await GetTaskSheets(req, res);
 
         expect(res.statusCode).toBe(400);
         expect(res._getJSONData()).toEqual({ error: 'ids are required' });
@@ -33,7 +33,7 @@ describe('GET /api/task_sheet', () => {
             query: { ids: [1,2,3] } // Comma-separated string
         });
 
-        await GET(req, res);
+        await GetTaskSheets(req, res);
 
         expect(res.statusCode).toBe(400);
         expect(res._getJSONData()).toEqual({ error: 'ids must be a comma-separated string' });
@@ -45,7 +45,7 @@ describe('GET /api/task_sheet', () => {
             query: { ids: '1,abc' } // Invalid ids
         });
 
-        await GET(req, res);
+        await GetTaskSheets(req, res);
 
         expect(res.statusCode).toBe(400);
         expect(res._getJSONData()).toEqual({ error: 'all ids must be numbers' });
@@ -57,7 +57,7 @@ describe('GET /api/task_sheet', () => {
             query: { ids: '3,4' } // Non-existing ids
         });
 
-        await GET(req, res);
+        await GetTaskSheets(req, res);
 
         expect(res.statusCode).toBe(404);
         expect(res._getJSONData()).toEqual({ error: 'No task sheets found for provided IDs' });
@@ -69,7 +69,7 @@ describe('GET /api/task_sheet', () => {
             query: { ids: '1,2' } // Valid ids
         });
 
-        await GET(req, res);
+        await GetTaskSheets(req, res);
 
         expect(res.statusCode).toBe(200);
         expect(res._getJSONData()).toEqual({ taskSheets: mockTaskSheets });

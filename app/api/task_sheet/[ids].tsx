@@ -10,7 +10,7 @@ function findTaskSheetsByIds(ids: number[]): TaskSheet[] {
     return taskSheets.filter(taskSheet => ids.includes(taskSheet.id));
 }
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GetTaskSheets(req: NextApiRequest, res: NextApiResponse) {
     const idsParam = req.query.ids;
 
     if (!idsParam) {
@@ -36,3 +36,5 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
 
     return res.status(200).json({ taskSheets });
 }
+
+export default GetTaskSheets;

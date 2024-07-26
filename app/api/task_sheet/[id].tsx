@@ -20,7 +20,7 @@ const taskSheets: TaskSheet[] = [
 ];
 
 // GET function to fetch tasks for a specific TaskSheet
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GetTasks(req: NextApiRequest, res: NextApiResponse) {
     const {id} = req. query;
 
     if (!id) {
@@ -43,4 +43,4 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
     return res.status(200).json({ tasks });
 }
 
-export default GET;
+export default GetTasks;
