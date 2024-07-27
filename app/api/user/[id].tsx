@@ -20,11 +20,14 @@ export async function GetUserTimeSheets(req: NextRequest) {
     if (Array.isArray(id)) {
         return NextResponse.json({ error: 'name must be a single value' }, { status: 400 });
     }
+    const num_id = parseInt(id);
     //let taskSheets = findUsersTaskSheets(intID)
     //get user from sample array by index
-    let user = users[0];
+
+    //probably should be num_id-1 because the users start with 1 and array starts with 0
+    let user = users[num_id];
     if (user=== undefined) {
-        return NextResponse.json({ error: 'User with that ID does not exist' }, { status: 400 });
+        return NextResponse.json({ error: 'User with that ID does not exist' }, { status: 404 });
     }
     return NextResponse.json({ user }, { status: 200 });
 }
