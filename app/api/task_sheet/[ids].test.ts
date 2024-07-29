@@ -30,7 +30,7 @@ describe('GET /api/task_sheet', () => {
     it('should return 400 if ids are not a comma-separated string', async () => {
         const { req, res } = createMocks<NextApiRequest, NextApiResponse>({
             method: 'GET',
-            query: { ids: [1,2,3] } // Comma-separated string
+            query: { ids: [1,2,3] } // Not a comma-separated string
         });
 
         await GetTaskSheets(req, res);

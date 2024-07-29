@@ -2,7 +2,7 @@ import { createMocks } from 'node-mocks-http';
 import { GetTasks } from './[id]';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-describe('GET /api/tasksheet/[id]', () => {
+describe('GET /api/task_sheet/[id]', () => {
     it('should return 400 if TaskSheet ID is not provided', async () => {
         const { req, res } = createMocks<NextApiRequest, NextApiResponse>({
             method: 'GET',
