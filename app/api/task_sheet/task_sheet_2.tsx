@@ -36,7 +36,7 @@ const taskSheets: TaskSheet[] = [
  * @param id The ID of the task sheet to get
  * @returns The task sheet with the given ID
  */
-const getTaskSheetById = async(req: NextRequest) => {
+export async function getTaskSheetById(req: NextRequest) {
     const id: string = req.nextUrl.searchParams.get("Id") || "";
     if (!id) {
         return NextResponse.json({ error: 'ID parameter is required' }, { status: 400 });
