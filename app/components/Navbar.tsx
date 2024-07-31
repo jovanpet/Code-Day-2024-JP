@@ -23,7 +23,7 @@ const Navbar = () => {
         <nav className="bg-white text-black w-full flex justify-between p-2">
             <p>Logo</p>
             <form onSubmit={handleSearch} className="w-1/2">
-                <input 
+                <input          
                     className="w-full border-2 border-black rounded-2xl p-1"
                     type="text"
                     value={search}
