@@ -9,7 +9,8 @@ async function CallAPI() {
     } as any;
 
     const response = await GetUserTimeSheets(requestObj);
-    const body: { user: { [key: string]: any } } = await response.json();
+    const body = await response.json();
+    console.log(body.body)
     return (
         <>
             <table className='table table-bordered'>
@@ -19,10 +20,9 @@ async function CallAPI() {
                     </tr>
                 </thead>
                 <tbody>
-                    {Object.keys(body.user).map((key) => (
+                    {Object.keys(body.body).map((key) => (
                         <tr key={key}>
                             <td>{key}</td>
-                            <td>{body.user[key]}</td>
                         </tr>
                     ))}
                 </tbody>
