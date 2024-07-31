@@ -10,7 +10,7 @@ async function CallAPI() {
 
     const response = await GetUserTimeSheets(requestObj);
     const body = await response.json();
-    console.log(body.body)
+
     return (
         <>
             <table className='table table-bordered'>
