@@ -6,3 +6,32 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Task {
+  id          String    @id @default(cuid())
+  name        String
+  completed   Boolean
+  createdAt   DateTime  @default(now())
+  dueDate     DateTime?
+  taskSheet   TaskSheet @relation(fields: [taskSheetId], references: [id])
+  taskSheetId String
+}
+
+model TaskSheet {
+  id          String @id @default(cuid())
+  tasks       Task[]
+  description String
+  title       String
+  users       User[]
+}
+
+model User {
+  id         String      @id @default(cuid())
+  firstName  String
+  lastName   String
+  taskSheets TaskSheet[]
+  isParent   Boolean
+  phone      String
+  email      String      @unique
+  photoHash  String
+}
