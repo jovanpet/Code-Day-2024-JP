@@ -12,6 +12,7 @@ model Task {
   name        String
   completed   Boolean
   createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
   dueDate     DateTime?
   taskSheet   TaskSheet @relation(fields: [taskSheetId], references: [id])
   taskSheetId String
@@ -23,6 +24,8 @@ model TaskSheet {
   description String
   title       String
   users       User[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model User {
@@ -34,4 +37,6 @@ model User {
   phone      String
   email      String      @unique
   photoHash  String
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
 }
