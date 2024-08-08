@@ -3,17 +3,12 @@ import axios from 'axios';
 import TaskList from './TaskList';
 import { Task } from '@/app/api/interfaces/interfaces';
 
-const tasksData: Task[] = [
-    { task_id: 1, task_name: 'Homework', completed: false, user_ids: '[1, 2]' },
-    { task_id: 2, task_name: 'Chores', completed: true, user_ids: '[1, 2]' },
-];
-
 interface TaskSheetDetailProps {
   taskSheetId: number;
 }
 
 const TaskSheetDetail: React.FC<TaskSheetDetailProps> = ({ taskSheetId }) => {
-    const [tasks, setTasks] = useState<Task[]>(tasksData);
+    const [tasks, setTasks] = useState<Task[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 

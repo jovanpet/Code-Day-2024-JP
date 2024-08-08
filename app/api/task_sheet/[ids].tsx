@@ -1,9 +1,21 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { TaskSheet } from '../interfaces/interfaces.tsx';
+import { TaskSheet } from '../interfaces/interfaces';
 
 const taskSheets: TaskSheet[] = [
-    { id: 1, tasks: '[{"task_id":1,"task_name":"homework1","completed":false,"user_ids":"[{\"id\":1},{\"id\":2}]"},{"task_id":2,"task_name":"homework2","completed":true,"user_ids":"[{\"id\":1},{\"id\":2}]"}]' },
-    { id: 2, tasks: '[{"task_id":1,"task_name":"homework1","completed":false,"user_ids":"[{\"id\":1},{\"id\":2}]"},{"task_id":2,"task_name":"homework2","completed":true,"user_ids":"[{\"id\":1},{\"id\":2}]"}]' }
+    {
+        id: 1,
+        tasks: [
+            { task_name: "homework1", completed: false },
+            { task_name: "homework2", completed: true }
+        ]
+    },
+    {
+        id: 2,
+        tasks: [
+            { task_name: "homework1", completed: false },
+            { task_name: "homework2", completed: true }
+        ]
+    }
 ];
 
 function findTaskSheetsByIds(ids: number[]): TaskSheet[] {

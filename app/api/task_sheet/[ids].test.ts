@@ -6,11 +6,17 @@ import { TaskSheet } from '../interfaces/interfaces';
 let mockTaskSheets: TaskSheet[] = [
     {
         id: 1,
-        tasks: '[{"task_id":1,"task_name":"homework1","completed":false,"user_ids":"[{\"id\":1},{\"id\":2}]"},{"task_id":2,"task_name":"homework2","completed":true,"user_ids":"[{\"id\":1},{\"id\":2}]"}]'
+        tasks: [
+            { task_name: "homework1", completed: false },
+            { task_name: "homework2", completed: true }
+        ]
     },
     {
         id: 2,
-        tasks: '[{"task_id":1,"task_name":"homework1","completed":false,"user_ids":"[{\"id\":1},{\"id\":2}]"},{"task_id":2,"task_name":"homework2","completed":true,"user_ids":"[{\"id\":1},{\"id\":2}]"}]'
+        tasks: [
+            { task_name: "homework1", completed: false },
+            { task_name: "homework2", completed: true }
+        ]
     }
 ];
 
@@ -30,7 +36,7 @@ describe('GET /api/task_sheet', () => {
     it('should return 400 if ids are not a comma-separated string', async () => {
         const { req, res } = createMocks<NextApiRequest, NextApiResponse>({
             method: 'GET',
-            query: { ids: [1,2,3] } // Not a comma-separated string
+            query: { ids: [1, 2, 3] } // Not a comma-separated string
         });
 
         await GetTaskSheets(req, res);

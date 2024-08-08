@@ -50,8 +50,8 @@ describe('GET /api/task_sheet/[id]', () => {
         expect(res.statusCode).toBe(200);
         expect(res._getJSONData()).toEqual({
             tasks: [
-                { task_id: 1, task_name: 'Homework', completed: false, user_ids: '[1, 2]' },
-                { task_id: 2, task_name: 'Chores', completed: true, user_ids: '[1, 2]' },
+                { task_name: 'Homework', completed: false },
+                { task_name: 'Chores', completed: true },
             ],
         });
     });
