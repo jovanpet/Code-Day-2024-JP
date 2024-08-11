@@ -1,13 +1,10 @@
-import CallAPI from './api/user/page';
-import {ImageUploader} from './components/UserProfile';
-import Avatar from './components/UserProfile';
+import CallAPI from './api/user/GetUserTaskSheet';
+import Navbar from './/components/Navbar';
 export default function Home() {
     return (
         <main>
-            <h1>Hello World!</h1>
+            <Navbar/>            
             <CallAPI />
-            <ImageUploader/>
-            <Avatar/>
         </main>
     );
 }

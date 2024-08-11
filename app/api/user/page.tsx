@@ -1,33 +1,53 @@
-import { GetUserTimeSheets } from './[id].tsx';
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 
-async function CallAPI() {
-    const requestObj = {
-        nextUrl: {
-            searchParams: new URLSearchParams({ Id: '1' }),
-        },
-    } as any;
+function Profile() {
+    const [imageDataUrl, setImageDataUrl] = useState("");
 
-    const response = await GetUserTimeSheets(requestObj);
-    const body = await response.json();
+    // Function to handle file input change
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+            setImageDataUrl(reader.result);
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    };
 
     return (
-        <>
-            <table className='table table-bordered'>
-                <thead>
-                    <tr>
-                        <th>Users</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {Object.keys(body.body).map((key) => (
-                        <tr key={key}>
-                            <td>{key}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </>
+        <div>
+            <input type="file" onChange={handleFileChange} />
+
+            <span id="source" style={{ display: "none" }}>
+                {imageDataUrl}
+            </span>
+
+            {/* {imageDataUrl && <p>{imageDataUrl}</p>} */}
+            {/* imageDataUrl is the hashed string  */}
+
+            <div className="hero bg-base-200 min-h-screen">
+                <div className="hero-content flex-col lg:flex-row">
+                    <div className="avatar">
+                        <div className="ring-primary ring-offset-base-100 w-24 rounded-full ring ring-offset-2">
+                            <div id="avatar">
+                                {imageDataUrl && <img src={imageDataUrl} alt="Uploaded avatar" />}
+                            </div>                
+                        </div>
+                    </div>
+                    <div>
+                        <h1 className="text-5xl font-bold">User</h1>
+                        <p className="py-6">
+                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+                        quasi. In deleniti eaque aut repudiandae et a id nisi.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }
-export default CallAPI;
+export default Profile;

@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-
+import Link from 'next/link';
 /**
  * JSX Component for the Navbar of the application
  *
@@ -31,7 +31,9 @@ const Navbar = () => {
                     placeholder="Search..."
                 />
             </form>
-            <p>Profile Icon</p>
+            <div id = 'profile'>
+                <Link href = "api/user/">Profile</Link>
+            </div>
         </nav>
     );
 };
