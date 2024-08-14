@@ -9,7 +9,7 @@ import prisma from '../prismaClient';
  * @returns The task sheet with the given ID
  */
 export async function getTaskSheetById(req: NextRequest) {
-    const id: string = req.nextUrl.searchParams.get("id") || "";
+    const id: string = req.nextUrl.searchParams.get("Id") || "";
     if (!id) {
         return NextResponse.json({ error: 'ID parameter is required' }, { status: 400 });
     }
@@ -27,5 +27,3 @@ export async function getTaskSheetById(req: NextRequest) {
     }
     return NextResponse.json({ body: taskSheet }, { status: 200 });
 };
-
-export default getTaskSheetById;

@@ -1,7 +1,7 @@
 /**
  * @jest-environment node
  */
-import { GetUserTimeSheets } from './[id].tsx';
+import { GetUserTaskSheets } from './[id].tsx';
 
 
 const expected_user_json = "{\"body\":{\"task_sheet_ids\":[{\"id\":1},{\"id\":2}]}}";
@@ -14,7 +14,7 @@ it('should return data with status 200', async () => {
         },
     } as any;
 
-    const response = await GetUserTimeSheets(requestObj);
+    const response = await GetUserTaskSheets(requestObj);
 
 
     expect(response.status).toBe(200);
@@ -29,7 +29,7 @@ it('should return error with status 400 when item not found', async () => {
         },
     } as any;
 
-    const response = await GetUserTimeSheets(requestObj);
+    const response = await GetUserTaskSheets(requestObj);
 
     expect(response.status).toBe(404);
     const body = await response.json();

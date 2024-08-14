@@ -1,4 +1,4 @@
-import { GetUserTimeSheets } from './[id].tsx';
+import { GetUserTaskSheets } from './[id].tsx';
 import React from 'react';
 
 async function CallAPI() {
@@ -8,7 +8,7 @@ async function CallAPI() {
         },
     } as any;
 
-    const response = await GetUserTimeSheets(requestObj);
+    const response = await GetUserTaskSheets(requestObj);
     const body = await response.json();
 
     return (
