@@ -20,7 +20,7 @@ async function CallAPI() {
                     </tr>
                 </thead>
                 <tbody>
-                    {Object.keys(body.body).map((key) => (
+                    {Object.keys(body).map((key) => (
                         <tr key={key}>
                             <td>{key}</td>
                         </tr>
