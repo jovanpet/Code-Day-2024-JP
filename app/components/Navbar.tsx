@@ -34,6 +34,9 @@ const Navbar = () => {
             <div id = 'profile'>
                 <Link href = "api/user/">Profile</Link>
             </div>
+            <div id = 'signup'>
+                <Link href = "/signup/">Sign Up</Link>
+            </div>
         </nav>
     );
 };

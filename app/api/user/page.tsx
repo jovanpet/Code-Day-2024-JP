@@ -5,12 +5,12 @@ function Profile() {
     const [imageDataUrl, setImageDataUrl] = useState("");
 
     // Function to handle file input change
-    const handleFileChange = (event) => {
-        const file = event.target.files[0];
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
         const reader = new FileReader();
 
         reader.onloadend = () => {
-            setImageDataUrl(reader.result);
+            setImageDataUrl(reader.result as string);
         };
 
         if (file) {
@@ -20,7 +20,7 @@ function Profile() {
 
     return (
         <div>
-            <input type="file" onChange={handleFileChange} />
+            <input type="file" className="file-input file-input-bordered w-full max-w-xs" onChange={handleFileChange} />
 
             <span id="source" style={{ display: "none" }}>
                 {imageDataUrl}
