@@ -1,4 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+---
+
+# FamilyChecklist
+
+FamilyChecklist is a web-based application designed to help parents and kids stay organized and track progress together. Built with robust AWS infrastructure and a modern web framework, this application offers two distinct interfaces tailored for parents and kids, ensuring a user-friendly experience for both.
+
+## Features
+
+- **Two Separate Interfaces**: 
+  - **Parent Interface**: Manage tasks, monitor progress, and set goals for your kids.
+  - **Kid Interface**: View assigned tasks, check off completed activities, and track achievements.
+  
+- **Progress Tracking**: Keep a record of completed tasks and see how your family progresses over time.
+
+- **Secure Authentication**: Implemented with best practices to ensure that your data remains private and secure.
 
 ## Getting Started
 
